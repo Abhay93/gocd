@@ -15,11 +15,11 @@
 		<mule.maven.plugin.version>3.1.6</mule.maven.plugin.version>
 		<munit.version>2.1.4</munit.version>
 		<mule.version>4.1.4</mule.version>
-		<username>abhay1593_5</username>
+		<username>v_ifs_abhaysingh.y@partners.temasek.com.sg </username>
 		<password>P@ss1234</password>
 		<!-- #passed in argument -->
 		<cloudhub.application.name>thtest</cloudhub.application.name>
-		<environment>Sandbox</environment>
+		<environment>Development</environment>
 	</properties>
 
 	<build>
@@ -33,7 +33,7 @@
 				<configuration>
 					<!-- CloudHub Deployment -->
 					<cloudHubDeployment>
-						<uri>https://anypoint.mulesoft.com/</uri>
+						<uri>https://anypoint.mulesoft.com/accounts/login/compaz</uri>
 						<artifact>thtest.jar</artifact>
 						<muleVersion>${mule.version}</muleVersion>
 						<username>${username}</username>
@@ -42,7 +42,7 @@
 						<environment>${environment}</environment>
 						<!-- <region>us-east-2</region> -->
 						<!-- <businessGroup>ORG\SUB_ORG</businessGroup> -->
-						<businessGroup>TEST</businessGroup>
+						<!-- <businessGroup>TEST</businessGroup> -->
 					</cloudHubDeployment>
 				</configuration>
 			</plugin>
