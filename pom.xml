@@ -1,53 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
 	<artifactId>demo</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <packaging>mule-application</packaging>
+	<version>10.0.0-SNAPSHOT</version>
+	<packaging>mule-application</packaging>
 	<name>demo</name>
-   	<properties>
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<app.runtime>4.1.4</app.runtime>
 		<mule.maven.plugin.version>3.1.6</mule.maven.plugin.version>
 		<munit.version>2.1.4</munit.version>
 		<mule.version>4.1.4</mule.version>
-		<username>v_ifs_abhaysingh.y@partners.temasek.com.sg </username>
+		<!-- <versionToDeploy>6.0.0-SNAPSHOT</versionToDeploy> -->
+		<username>abhay1593_5</username>
 		<password>P@ss1234</password>
 		<!-- #passed in argument -->
 		<cloudhub.application.name>thtest</cloudhub.application.name>
-		<environment>Development</environment>
+		<environment>Sandbox</environment>
 	</properties>
 
 	<build>
 	    <finalName>${project.artifactId}-${project.version}</finalName>
 		<plugins>
-			<plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-					<!-- CloudHub Deployment -->
-					<cloudHubDeployment>
-						<uri>https://anypoint.mulesoft.com/accounts/login/compaz</uri>
-						<artifact>thtest.jar</artifact>
-						<muleVersion>${mule.version}</muleVersion>
-						<username>${username}</username>
-						<password>${password}</password>
-						<applicationName>${cloudhub.application.name}</applicationName>
-						<environment>${environment}</environment>
-						<!-- <region>us-east-2</region> -->
-						<!-- <businessGroup>ORG\SUB_ORG</businessGroup> -->
-						<!-- <businessGroup>TEST</businessGroup> -->
-					</cloudHubDeployment>
-				</configuration>
-			</plugin>
-
-
 			<!-- MUnit Plugin -->
 			<plugin>
 				<groupId>com.mulesoft.munit.tools</groupId>
@@ -78,6 +56,67 @@
 					</coverage>
 				</configuration>
 			</plugin>
+			<!-- Maven dependency plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+				  <execution>
+					<id>default-cli</id>
+					<!-- <phase>package</phase> -->
+					<goals>
+					  <goal>copy</goal>
+					</goals>
+					<configuration>
+					  <artifactItems>
+						<artifactItem>
+						  <groupId>com.mycompany</groupId>
+						  <artifactId>demo</artifactId>
+						  <version>${versionToDeploy}</version>
+						  <type>jar</type>
+						  <classifier>mule-application</classifier>
+						  <overWrite>true</overWrite>
+						  <outputDirectory>copy/</outputDirectory>
+						  <destFileName>${project.artifactId}-${versionToDeploy}-${project.packaging}.jar</destFileName>
+						</artifactItem>
+					  </artifactItems>
+					  <!-- other configurations here -->
+					</configuration>
+				  </execution>
+				</executions>
+		  </plugin>
+		  
+
+
+			
+			<!-- Mule Plugin -->
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<version>${mule.maven.plugin.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<!-- CloudHub Deployment -->
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com/</uri>
+						<muleVersion>${mule.version}</muleVersion>
+						<username>${username}</username>
+						<password>${password}</password>
+						<artifact>copy\${versionToDeploy}</artifact>
+						<applicationName>${versionToDeploy}</applicationName>
+						<environment>${environment}</environment>
+						<!-- <region>us-east-2</region> -->
+						<!-- <businessGroup>ORG\SUB_ORG</businessGroup> -->
+						<businessGroup>TEST</businessGroup>
+						<properties>
+							<key>value</key>
+						</properties>
+					</cloudHubDeployment>
+				</configuration>
+			</plugin>
+			
+			
 		</plugins>
 	</build>
 
@@ -113,13 +152,11 @@
 	</dependencies>
 
 	<repositories>
-		<!-- repo to get dependenciey -->
 		<repository>
 			<id>snapshots</id>
-			<name>DESKTOP-ITN6AAA-snapshots</name>
+			<name>BLRMNC349883D-snapshots</name>
 			<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
 		</repository>
-
 		<repository>
 			<id>anypoint-exchange</id>
 			<name>Anypoint Exchange</name>
@@ -148,7 +185,7 @@
 	<distributionManagement>
 		<snapshotRepository>
 			<id>snapshots</id>
-			<name>DESKTOP-ITN6AAA-snapshots</name>
+			<name>BLRMNC349883D-snapshots</name>
 			<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
 		</snapshotRepository>
 	</distributionManagement>
