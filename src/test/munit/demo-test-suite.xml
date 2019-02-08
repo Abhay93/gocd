@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="demo-test-suite.xml" />
+	<munit:test name="demo-test-suite-demoFlowTest" description="Test" doc:id="83efa998-7099-4331-a45e-faec9e25cba6" >
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to demoFlow" doc:id="d618d6ac-cf65-452c-adf4-ae0382121366" name="demoFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="d527ce87-8036-41ee-acd1-84886de6ed1e" expression="#[payload]" message="Failed" is='#[MunitTools::equalTo("Welcome to TH")]'/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="demo-test-suite-demoFlowTest1" description="Test" doc:id="b247330a-c8cb-4855-a363-a41b566914a1" >
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to demoFlow" doc:id="5bdfe567-0e92-4b3a-b9d2-e252a0d37609" name="demoFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Copy_of_Assert that" doc:id="0552ebe3-e2e7-4af2-95ff-0972cf50ea21" expression="#[payload]" is='#[MunitTools::equalTo("Welcome to TH")]' message="Failed" />
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
