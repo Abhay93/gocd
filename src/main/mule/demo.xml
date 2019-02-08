@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:spring="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
-    <flow name="mvn4Flow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/mvn4" doc:name="HTTP"/>
-        <logger message="HI" level="INFO" doc:name="Logger"/>
-    </flow>
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:tls="http://www.mulesoft.org/schema/mule/tls" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config"
+		doc:name="HTTP Listener config" doc:id="91c6b429-daf9-4a6a-89a2-b55e7b9a8500">
+		<http:listener-connection host="0.0.0.0"
+			port="${http.port}">
+		</http:listener-connection>
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties"
+		doc:id="ee87d0e1-d03d-4485-81b6-d2e224ea230b" file="config-properties.yaml" />
+	<flow name="demoFlow" doc:id="dde49f43-516b-4bd0-aebf-14ec85f166eb">
+		<http:listener doc:id="17de1157-3e48-4df6-aa8e-56a156405632"
+			doc:name="" config-ref="HTTP_Listener_config" path="/demo" />
+		<logger level="INFO" doc:name="Logger"
+			doc:id="12228651-4c85-49f5-821b-291d65862d0f" message="Hi" />
+		<choice doc:name="Choice" doc:id="70e8dc4e-7d20-49f6-90eb-7820374b2b31">
+			<when expression="#[1==1]">
+				<set-payload value="Welcome to TH" doc:name="Set Payload" doc:id="9ffdf146-e38d-4ceb-aff8-4139b000c9f3" />
+			</when>
+			<otherwise>
+				<set-payload value="Welcome to TH" doc:name="Set Payload"
+					doc:id="5b5db108-e2e5-49dd-9c9a-103097f5133d" />
+			</otherwise>
+		</choice>
+	</flow>
 </mule>
