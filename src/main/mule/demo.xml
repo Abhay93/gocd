@@ -11,11 +11,9 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<http:listener-config name="HTTP_Listener_config"
 		doc:name="HTTP Listener config" doc:id="91c6b429-daf9-4a6a-89a2-b55e7b9a8500">
 		<http:listener-connection host="0.0.0.0"
-			port="${http.port}">
+			port="8082">
 		</http:listener-connection>
 	</http:listener-config>
-	<configuration-properties doc:name="Configuration properties"
-		doc:id="ee87d0e1-d03d-4485-81b6-d2e224ea230b" file="config-properties.yaml" />
 	<flow name="demoFlow" doc:id="dde49f43-516b-4bd0-aebf-14ec85f166eb">
 		<http:listener doc:id="17de1157-3e48-4df6-aa8e-56a156405632"
 			doc:name="" config-ref="HTTP_Listener_config" path="/demo" />

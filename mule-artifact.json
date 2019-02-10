@@ -1,19 +1,4 @@
 {
-  "configs": [
-    "demo.xml"
-  ],
-  "redeploymentEnabled": true,
-  "name": "demo",
-  "minMuleVersion": "4.0.0",
-  "requiredProduct": "MULE_EE",
-  "classLoaderModelLoaderDescriptor": {
-    "id": "mule",
-    "attributes": {
-      "exportedResources": []
-    }
-  },
-  "bundleDescriptorLoader": {
-    "id": "mule",
-    "attributes": {}
-  }
+  "minMuleVersion": "4.1.4",
+  "requiredProduct": "MULE_EE"
 }
