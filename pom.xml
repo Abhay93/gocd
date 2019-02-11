@@ -98,7 +98,7 @@
 				<extensions>true</extensions>
 				<executions>
 					<execution>
-						<id>deploy</id>
+						<id>mule-deploy</id>
 						<phase>deploy</phase>
 						<goals>
 							<goal>deploy</goal>
