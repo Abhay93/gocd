@@ -41,6 +41,9 @@
 					</execution>
 				</executions>
 				<configuration>
+					<testOutputDirectory>report</testOutputDirectory>
+					<!-- dir/munit-reports/output/munit-${suiteName}-output.txt -->
+					<redirectTestOutputToFile>true</redirectTestOutputToFile>
 					<coverage>
 						<runCoverage>true</runCoverage>
 						<failBuild>true</failBuild>
@@ -50,6 +53,7 @@
 						<formats>
 							<format>console</format>
 							<format>html</format>
+							<format>json</format>
 						</formats>
 					</coverage>
 				</configuration>
