@@ -47,7 +47,7 @@
 					<coverage>
 						<runCoverage>true</runCoverage>
 						<failBuild>true</failBuild>
-						<requiredApplicationCoverage>65</requiredApplicationCoverage>
+						<requiredApplicationCoverage>70</requiredApplicationCoverage>
 						<requiredResourceCoverage>0</requiredResourceCoverage>
 						<requiredFlowCoverage>0</requiredFlowCoverage>
 						<formats>
