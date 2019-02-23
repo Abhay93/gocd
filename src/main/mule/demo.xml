@@ -18,7 +18,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:listener doc:id="17de1157-3e48-4df6-aa8e-56a156405632"
 			doc:name="" config-ref="HTTP_Listener_config" path="/demo" />
 		<logger level="INFO" doc:name="Logger"
-			doc:id="12228651-4c85-49f5-821b-291d65862d0f" message="Hi" />
+			doc:id="12228651-4c85-49f5-821b-291d65862d0f" message="Hi Two" />
 		<choice doc:name="Choice" doc:id="70e8dc4e-7d20-49f6-90eb-7820374b2b31">
 			<when expression="#[1==1]">
 				<set-payload value="Welcome to TH" doc:name="Set Payload" doc:id="9ffdf146-e38d-4ceb-aff8-4139b000c9f3" />

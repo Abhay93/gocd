@@ -16,8 +16,6 @@
         <mule.maven.plugin.version>3.1.6</mule.maven.plugin.version>
         <munit.version>2.1.4</munit.version>
         <mule.version>4.1.4</mule.version>
-        <anypoint.username>abhay1593_5</anypoint.username>
-        <anypoint.password>P@ss1234</anypoint.password>
         <anypoint.environment>Sandbox</anypoint.environment>
 		<anypoint.businessGroup>TEST</anypoint.businessGroup>
 		<cloudhub.application.name>thtesting</cloudhub.application.name>
@@ -47,7 +45,7 @@
 					<coverage>
 						<runCoverage>true</runCoverage>
 						<failBuild>true</failBuild>
-						<requiredApplicationCoverage>70</requiredApplicationCoverage>
+						<requiredApplicationCoverage>60</requiredApplicationCoverage>
 						<requiredResourceCoverage>0</requiredResourceCoverage>
 						<requiredFlowCoverage>0</requiredFlowCoverage>
 						<formats>
@@ -111,22 +109,13 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
-				<executions>
-					<execution>
-						<id>mule-deploy</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>deploy</goal>
-						</goals>
-					</execution>
-				</executions>
 				<configuration>
 					<!-- CloudHub Deployment -->
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com/</uri>
 						<muleVersion>${mule.version}</muleVersion>
-						<username>${anypoint.username}</username>
-						<password>${anypoint.password}</password>
+						<username>Abhay1593_5</username>
+						<password>P@ss1234</password>
 						<artifact>copy/${project.artifactId}-${versionToDeploy}-${project.packaging}.jar</artifact>
 						<applicationName>${cloudhub.application.name}</applicationName>
 						<environment>${anypoint.environment}</environment>
@@ -171,6 +160,16 @@
 	</dependencies>
 	<!-- Profiles -->
 	<profiles>
+		
+		<!-- encrypted one doesnt work <profile>
+			<id>anypoint</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<anypoint.password>P@ss1234</anypoint.password>
+			</properties>
+		</profile> -->
 		<!-- Profile to specify munit coverage dynamically -->
 		<profile>
 			<id>munit</id>
