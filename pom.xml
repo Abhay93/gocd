@@ -210,11 +210,7 @@
 	</profiles>
 	<!-- Repositories -->
     <repositories>
-        <repository>
-            <id>snapshots</id>
-            <name>BLRMNC349883D-snapshots</name>
-            <url>http://localhost:8081/artifactory/libs-snapshot-local</url>
-        </repository>
+        
         <repository>
             <id>anypoint-exchange</id>
             <name>Anypoint Exchange</name>
@@ -239,12 +235,12 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-    <!-- JFrog repo to push to -->
+    <!-- JFrog repo to push to 
     <distributionManagement>
         <snapshotRepository>
             <id>snapshots</id>
             <name>BLRMNC349883D-snapshots</name>
             <url>http://localhost:8081/artifactory/libs-snapshot-local</url>
         </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement>-->
 </project>
